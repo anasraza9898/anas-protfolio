@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Anas Memon logo">
+  <defs>
+    <linearGradient id="amGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2EA8DE"/>
+      <stop offset="100%" stop-color="#14B8A6"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="64" height="64" rx="16" fill="url(#amGradient)"/>
+
+  <!-- Chat bubble motif: nods to WhatsApp-enquiry positioning -->
+  <path d="M17 22a8 8 0 0 1 8-8h14a8 8 0 0 1 8 8v9a8 8 0 0 1-8 8H29l-7 6v-6h-1a4 4 0 0 1-4-4Z"
+        fill="#FFFFFF" fill-opacity="0.16"/>
+
+  <text x="32" y="39" font-family="Inter, system-ui, -apple-system, Segoe UI, sans-serif"
+        font-size="22" font-weight="800" fill="#FFFFFF" text-anchor="middle">AM</text>
+</svg>
