@@ -1,0 +1,26 @@
+{
+  "name": "anas-premium-ai-portfolio",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build --base=/anas-protfolio/ --logLevel error && node scripts/copy-assets.mjs",
+    "preview": "vite preview --host 127.0.0.1",
+    "qa:local": "node scripts/qa-local.mjs",
+    "serve:dist": "node scripts/serve-dist.mjs",
+    "capture:previews": "node scripts/capture-previews.mjs"
+  },
+  "dependencies": {
+    "framer-motion": "^12.23.12",
+    "lucide-react": "^0.468.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "playwright": "^1.49.1",
+    "sharp": "^0.33.5",
+    "vite": "^6.0.7"
+  }
+}
