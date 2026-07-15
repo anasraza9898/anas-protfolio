@@ -4,9 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite --host 127.0.0.1",
-    "build": "vite build --base=/anas-protfolio/ --logLevel error && node scripts/copy-assets.mjs",
-    "preview": "vite preview --host 127.0.0.1",
+    "dev": "vite --configLoader native --host 127.0.0.1",
+    "build": "vite build --configLoader native --logLevel error && node scripts/copy-assets.mjs",
+    "preview": "vite preview --configLoader native --host 127.0.0.1",
     "qa:local": "node scripts/qa-local.mjs",
     "serve:dist": "node scripts/serve-dist.mjs",
     "capture:previews": "node scripts/capture-previews.mjs"
