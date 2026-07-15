@@ -23,7 +23,6 @@ import {
   ExternalLink,
   Github,
   GraduationCap,
-  Home,
   LayoutGrid,
   Mail,
   Menu,
@@ -46,13 +45,13 @@ const assetUrl = (path) => `${import.meta.env.BASE_URL}${path.replace(/^\//, "")
 const navItems = [
   ["Services", "#services"],
   ["Projects", "#projects"],
+  ["More Work", "#more-work"],
   ["Proof", "#proof"],
   ["Process", "#process"],
-  ["Skills", "#skills"],
   ["Contact", "#contact"],
 ];
 
-const projects = [
+const featuredProjects = [
   {
     title: "Summit House Academy",
     category: "Education",
@@ -87,7 +86,7 @@ const projects = [
     features: ["Destination browsing", "Tour packages", "Trust sections", "WhatsApp consultation"],
   },
   {
-    title: "Al-Makkah Catering",
+    title: "Demo Catering",
     category: "Catering",
     industry: "Catering Website",
     image: assetUrl("/assets/images/previews/al-makkah-catering.webp"),
@@ -104,11 +103,60 @@ const projects = [
     image: assetUrl("/assets/images/previews/prime-nest-realty.webp"),
     url: "https://anasraza9898.github.io/prime-nest-reality-website/",
     description:
-      "A real estate demo for presenting listings, areas, buyer details and serious property enquiries in one clean flow.",
+      "A real estate demo for presenting listings, areas, project pages and serious property enquiries in one clean flow.",
     stack: ["Listing UI", "Filter-ready layout", "SEO metadata", "WhatsApp lead flow"],
     features: ["Property cards", "Area guidance", "Buyer enquiry", "Trust-building FAQ"],
   },
 ];
+
+const moreProjects = [
+  {
+    title: "Academy Demo",
+    category: "Education",
+    industry: "Academy Website",
+    image: assetUrl("/assets/images/project-academy.webp"),
+    url: "https://anasraza9898.github.io/academy-demo/",
+    description:
+      "A clean school and academy demo built around course discovery, admission confidence and simple enquiry paths.",
+    stack: ["HTML", "CSS", "JavaScript", "Responsive UI"],
+    features: ["Course sections", "Admission CTA", "Trust layout", "Fast static hosting"],
+  },
+  {
+    title: "Pearl Dental Clinic",
+    category: "Healthcare",
+    industry: "Clinic Website",
+    image: assetUrl("/assets/images/project-dental.webp"),
+    url: "https://anasraza9898.github.io/pearl-dental-clinic/?v=65",
+    description:
+      "A dental clinic website with service clarity, appointment intent, patient trust and polished local business presentation.",
+    stack: ["Service UX", "Responsive CSS", "Local SEO", "Booking CTA"],
+    features: ["Treatment cards", "Patient trust", "Appointment flow", "Mobile browsing"],
+  },
+  {
+    title: "AtlasPath Consultancy",
+    category: "Consultancy",
+    industry: "Immigration Website",
+    image: assetUrl("/assets/images/project-immigration.webp"),
+    url: "https://anasraza9898.github.io/atlaspath-consultancy/",
+    description:
+      "A consultancy presence focused on service credibility, process clarity and lead-ready information architecture.",
+    stack: ["Landing UX", "Service content", "Lead flow", "GitHub Pages"],
+    features: ["Visa services", "Process steps", "Credibility cues", "Contact CTA"],
+  },
+  {
+    title: "Royal Beauty Lounge",
+    category: "Beauty",
+    industry: "Salon Website",
+    image: assetUrl("/assets/images/project-salon.webp"),
+    url: "https://anasraza9898.github.io/royal-beauty-lounge/",
+    description:
+      "A salon website with premium service presentation, visual polish and direct enquiry moments for local customers.",
+    stack: ["Beauty UI", "Responsive layout", "Service cards", "CTA flow"],
+    features: ["Service menu", "Brand feel", "Offer sections", "Mobile-first layout"],
+  },
+];
+
+const allProjects = [...featuredProjects, ...moreProjects];
 
 const services = [
   ["Coaching Websites", "Admissions, batches, faculty, results and WhatsApp registration journeys.", GraduationCap],
@@ -120,11 +168,11 @@ const services = [
 ];
 
 const proofCards = [
-  ["Fast Performance", "Lean pages, optimized images and smooth transforms.", Zap],
-  ["Responsive", "Tested thinking for 320px phones through wide desktop.", LayoutGrid],
+  ["Fast Performance", "Lean pages, optimized images and transform-first animation.", Zap],
+  ["Responsive", "Designed for 320px phones through wide desktop screens.", LayoutGrid],
   ["SEO Ready", "Metadata, semantic sections and structured data included.", Search],
   ["AI Assisted", "Faster ideation and stronger content structure with human polish.", Bot],
-  ["Modern UI", "Premium light visuals, spacing and hierarchy.", MousePointer2],
+  ["Modern UI", "Premium light visuals, glass surfaces, spacing and hierarchy.", MousePointer2],
   ["Premium UX", "Clear journeys from interest to enquiry.", BadgeCheck],
   ["Clean Code", "Component-based React with maintainable data structures.", Code2],
   ["GitHub Deployment", "Built for static hosting and fast GitHub Pages delivery.", Github],
@@ -161,9 +209,9 @@ const skills = [
 ];
 
 const stats = [
-  ["5", "premium demos"],
+  [String(allProjects.length), "live projects"],
+  ["5", "featured builds"],
   ["320", "px mobile ready"],
-  ["8", "step delivery process"],
   ["100", "performance mindset"],
 ];
 
@@ -172,10 +220,10 @@ function SectionReveal({ children, className = "", delay = 0 }) {
   return (
     <m.div
       className={className}
-      initial={shouldReduceMotion ? false : { opacity: 0, y: 28 }}
+      initial={shouldReduceMotion ? false : { opacity: 0, y: 30 }}
       whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.18 }}
-      transition={{ duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] }}
+      viewport={{ once: true, amount: 0.16 }}
+      transition={{ duration: 0.58, delay, ease: [0.22, 1, 0.36, 1] }}
     >
       {children}
     </m.div>
@@ -187,14 +235,14 @@ function MagneticButton({ href, children, variant = "primary", className = "", .
   const shouldReduceMotion = useReducedMotion();
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-  const springX = useSpring(x, { stiffness: 220, damping: 18 });
-  const springY = useSpring(y, { stiffness: 220, damping: 18 });
+  const springX = useSpring(x, { stiffness: 240, damping: 20 });
+  const springY = useSpring(y, { stiffness: 240, damping: 20 });
 
   function handleMove(event) {
     if (shouldReduceMotion || !ref.current || !window.matchMedia("(hover: hover)").matches) return;
     const rect = ref.current.getBoundingClientRect();
-    x.set((event.clientX - rect.left - rect.width / 2) * 0.16);
-    y.set((event.clientY - rect.top - rect.height / 2) * 0.16);
+    x.set((event.clientX - rect.left - rect.width / 2) * 0.14);
+    y.set((event.clientY - rect.top - rect.height / 2) * 0.14);
   }
 
   function reset() {
@@ -231,12 +279,12 @@ function Counter({ value, suffix = "" }) {
       return undefined;
     }
     let frame = 0;
-    const totalFrames = 48;
+    const totalFrames = 44;
     const timer = window.setInterval(() => {
       frame += 1;
       setCount(Math.round((numericValue * frame) / totalFrames));
       if (frame >= totalFrames) window.clearInterval(timer);
-    }, 20);
+    }, 18);
     return () => window.clearInterval(timer);
   }, [inView, value]);
 
@@ -253,26 +301,32 @@ function TiltCard({ children, className = "" }) {
   const shouldReduceMotion = useReducedMotion();
   const rotateX = useMotionValue(0);
   const rotateY = useMotionValue(0);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
 
   function handleMove(event) {
     if (shouldReduceMotion || !ref.current || !window.matchMedia("(hover: hover)").matches) return;
     const rect = ref.current.getBoundingClientRect();
     const px = (event.clientX - rect.left) / rect.width - 0.5;
     const py = (event.clientY - rect.top) / rect.height - 0.5;
-    rotateX.set(py * -5);
-    rotateY.set(px * 5);
+    rotateX.set(py * -5.5);
+    rotateY.set(px * 5.5);
+    x.set(px * 8);
+    y.set(py * 8);
   }
 
   function reset() {
     rotateX.set(0);
     rotateY.set(0);
+    x.set(0);
+    y.set(0);
   }
 
   return (
     <m.article
       ref={ref}
       className={className}
-      style={{ rotateX, rotateY, transformPerspective: 900 }}
+      style={{ rotateX, rotateY, x, y, transformPerspective: 1000 }}
       onMouseMove={handleMove}
       onMouseLeave={reset}
     >
@@ -327,60 +381,66 @@ function Header() {
 function Hero() {
   const shouldReduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll();
-  const y = useTransform(scrollYProgress, [0, 0.35], [0, shouldReduceMotion ? 0 : 80]);
+  const y = useTransform(scrollYProgress, [0, 0.32], [0, shouldReduceMotion ? 0 : 72]);
+  const imageY = useTransform(scrollYProgress, [0, 0.28], [0, shouldReduceMotion ? 0 : -38]);
 
   return (
     <section className="hero" id="top">
-      <m.div className="hero-bg hero-bg-one" style={{ y }} aria-hidden="true" />
+      <m.div className="hero-orbit hero-orbit-one" style={{ y }} aria-hidden="true" />
+      <m.div className="hero-orbit hero-orbit-two" style={{ y: imageY }} aria-hidden="true" />
       <div className="container hero-grid">
         <SectionReveal className="hero-copy">
           <span className="badge"><Sparkles aria-hidden="true" /> Premium AI Website Agency</span>
-          <h1>High-end websites for real businesses that need trust, polish and enquiries.</h1>
+          <h1>Creative agency websites that make local businesses look established online.</h1>
           <p>
-            I build fast, mobile-first websites for academies, travel brands, real estate companies, catering services,
-            marquees and local businesses that want a premium online presence.
+            I design and build premium, mobile-first websites for academies, venues, travel brands, real estate,
+            catering, clinics, salons and service businesses that need trust, clarity and enquiries.
           </p>
           <div className="hero-actions">
             <MagneticButton href="#projects">
-              View Premium Work <ArrowRight aria-hidden="true" />
+              View All Projects <ArrowRight aria-hidden="true" />
             </MagneticButton>
             <MagneticButton href="#contact" variant="ghost">
               Discuss on WhatsApp <MessageCircle aria-hidden="true" />
             </MagneticButton>
           </div>
           <div className="hero-trust" aria-label="Portfolio strengths">
-            {["AI assisted", "SEO ready", "GitHub Pages", "WhatsApp leads"].map((item) => (
-              <span key={item}><Check aria-hidden="true" />{item}</span>
+            {[
+              [Rocket, `${allProjects.length} live projects`],
+              [ShieldCheck, "SEO-ready"],
+              [Zap, "Fast static builds"],
+              [MessageCircle, "Lead-focused CTAs"],
+            ].map(([Icon, item]) => (
+              <span key={item}><Icon aria-hidden="true" />{item}</span>
             ))}
           </div>
         </SectionReveal>
 
         <m.div
           className="hero-showcase"
-          initial={shouldReduceMotion ? false : { opacity: 0 }}
-          whileInView={shouldReduceMotion ? {} : { opacity: 1 }}
-          viewport={{ once: true, amount: 0.35 }}
-          transition={{ duration: 0.55, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
+          initial={shouldReduceMotion ? false : { opacity: 0, y: 24 }}
+          animate={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className="browser-card" aria-label="Premium website preview">
-            <div className="browser-top" aria-hidden="true">
-              <span />
-              <span />
-              <span />
-            </div>
-            <div
-              className="hero-preview-image"
-              role="img"
-              aria-label="Summit House Academy homepage preview"
-              style={{ backgroundImage: `url(${assetUrl("/assets/images/previews/summit-house-academy.webp")})` }}
+          <TiltCard className="studio-card">
+            <m.img
+              src={assetUrl("/assets/images/hero-studio.webp")}
+              width="1586"
+              height="992"
+              alt="Premium web development studio with laptop, dashboards and UI design screens"
+              decoding="async"
+              fetchPriority="high"
+              style={{ y: imageY }}
             />
-            <div className="floating-badge badge-left">
-              <Zap aria-hidden="true" /> Fast static builds
+            <div className="studio-glass glass-left">
+              <span>Design System</span>
+              <strong>UI + UX</strong>
             </div>
-            <div className="floating-badge badge-right">
-              <MessageCircle aria-hidden="true" /> WhatsApp enquiries
+            <div className="studio-glass glass-right">
+              <span>Deploy Ready</span>
+              <strong>GitHub Pages</strong>
             </div>
-          </div>
+          </TiltCard>
         </m.div>
       </div>
     </section>
@@ -413,8 +473,8 @@ function Services() {
         </SectionReveal>
         <div className="services-grid">
           {services.map(([title, description, Icon], index) => (
-            <SectionReveal key={title} delay={index * 0.03}>
-              <TiltCard className="service-card">
+            <SectionReveal key={title} delay={index * 0.035}>
+              <TiltCard className="service-card glass-card">
                 <span className="icon-box"><Icon aria-hidden="true" /></span>
                 <h3>{title}</h3>
                 <p>{description}</p>
@@ -427,52 +487,77 @@ function Services() {
   );
 }
 
+function ProjectCard({ project, index, compact = false }) {
+  return (
+    <SectionReveal delay={index * 0.045}>
+      <TiltCard className={`project-card glass-card ${compact ? "project-card-compact" : ""}`}>
+        <a className="project-media" href={project.url} target="_blank" rel="noopener noreferrer" aria-label={`Open ${project.title} live demo`}>
+          <img
+            src={project.image}
+            width="900"
+            height="566"
+            sizes={compact ? "(max-width: 760px) 100vw, 50vw" : "(max-width: 760px) 100vw, (max-width: 1180px) 52vw, 620px"}
+            alt={`${project.title} website homepage preview`}
+            loading={index === 0 && !compact ? "eager" : "lazy"}
+            decoding="async"
+          />
+          <span className="project-hover"><ExternalLink aria-hidden="true" /> Live Demo</span>
+        </a>
+        <div className="project-content">
+          <div className="project-meta">
+            <span>{project.category}</span>
+            <span>{project.industry}</span>
+          </div>
+          <h3>{project.title}</h3>
+          <p>{project.description}</p>
+          <div className="chip-row" aria-label={`${project.title} technology stack`}>
+            {project.stack.map((item) => <span key={item}>{item}</span>)}
+          </div>
+          <ul className="feature-list">
+            {project.features.map((feature) => (
+              <li key={feature}><Check aria-hidden="true" />{feature}</li>
+            ))}
+          </ul>
+          <MagneticButton href={project.url} variant="outline" target="_blank" rel="noopener noreferrer">
+            Live Demo <ExternalLink aria-hidden="true" />
+          </MagneticButton>
+        </div>
+      </TiltCard>
+    </SectionReveal>
+  );
+}
+
 function Projects() {
   return (
     <section className="section projects" id="projects">
       <div className="container">
         <SectionReveal className="section-head">
-          <span className="eyebrow">Selected Work</span>
+          <span className="eyebrow">Featured Projects</span>
           <h2>Premium demo websites for real business categories.</h2>
-          <p>Actual live projects, captured from their homepages and presented with business context.</p>
+          <p>Five current flagship projects, captured from their homepages and presented with business context.</p>
         </SectionReveal>
         <div className="project-list">
-          {projects.map((project, index) => (
-            <SectionReveal key={project.title} delay={index * 0.04}>
-              <TiltCard className="project-card">
-                <a className="project-media" href={project.url} target="_blank" rel="noopener noreferrer" aria-label={`Open ${project.title} live demo`}>
-                  <img
-                    src={project.image}
-                    width="900"
-                    height="566"
-                    sizes="(max-width: 760px) 100vw, (max-width: 1180px) 52vw, 620px"
-                    alt={`${project.title} website homepage preview`}
-                    loading={index === 0 ? "eager" : "lazy"}
-                    decoding="async"
-                  />
-                  <span className="project-hover"><ExternalLink aria-hidden="true" /> Live Demo</span>
-                </a>
-                <div className="project-content">
-                  <div className="project-meta">
-                    <span>{project.category}</span>
-                    <span>{project.industry}</span>
-                  </div>
-                  <h3>{project.title}</h3>
-                  <p>{project.description}</p>
-                  <div className="chip-row" aria-label={`${project.title} technology stack`}>
-                    {project.stack.map((item) => <span key={item}>{item}</span>)}
-                  </div>
-                  <ul className="feature-list">
-                    {project.features.map((feature) => (
-                      <li key={feature}><Check aria-hidden="true" />{feature}</li>
-                    ))}
-                  </ul>
-                  <MagneticButton href={project.url} variant="outline" target="_blank" rel="noopener noreferrer">
-                    View Live Demo <ExternalLink aria-hidden="true" />
-                  </MagneticButton>
-                </div>
-              </TiltCard>
-            </SectionReveal>
+          {featuredProjects.map((project, index) => (
+            <ProjectCard project={project} index={index} key={project.title} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function MoreWork() {
+  return (
+    <section className="section more-work" id="more-work">
+      <div className="container">
+        <SectionReveal className="section-head">
+          <span className="eyebrow">Previous / More Work</span>
+          <h2>Earlier builds restored into the full portfolio.</h2>
+          <p>These projects remain part of the body of work and are included with live links and optimized previews.</p>
+        </SectionReveal>
+        <div className="more-work-grid">
+          {moreProjects.map((project, index) => (
+            <ProjectCard project={project} index={index} compact key={project.title} />
           ))}
         </div>
       </div>
@@ -491,7 +576,7 @@ function Proof() {
         <div className="proof-grid">
           {proofCards.map(([title, description, Icon], index) => (
             <SectionReveal key={title} delay={index * 0.025}>
-              <article className="proof-card">
+              <article className="proof-card glass-card">
                 <Icon aria-hidden="true" />
                 <h3>{title}</h3>
                 <p>{description}</p>
@@ -515,7 +600,7 @@ function Process() {
         <ol className="timeline">
           {process.map(([title, description], index) => (
             <SectionReveal key={title} delay={index * 0.035}>
-              <li>
+              <li className="glass-card">
                 <span className="timeline-index">{String(index + 1).padStart(2, "0")}</span>
                 <div>
                   <h3>{title}</h3>
@@ -537,11 +622,11 @@ function Skills() {
         <SectionReveal className="section-head left">
           <span className="eyebrow">Skills</span>
           <h2>Design, frontend and performance working together.</h2>
-          <p>The portfolio stays focused on what helps a business website feel trustworthy and load quickly.</p>
+          <p>The portfolio stays focused on what helps a business website feel trustworthy, load quickly and convert interest into conversations.</p>
         </SectionReveal>
         <div className="skill-grid">
           {skills.map(([name, value], index) => (
-            <SectionReveal className="skill-item" key={name} delay={index * 0.02}>
+            <SectionReveal className="skill-item glass-card" key={name} delay={index * 0.02}>
               <div>
                 <span>{name}</span>
                 <strong>{value}%</strong>
@@ -564,7 +649,7 @@ function Skills() {
 function Contact() {
   const [form, setForm] = useState({ name: "", businessType: "", whatsapp: "", message: "" });
   const [errors, setErrors] = useState({});
-  const businessTypes = ["Coaching", "Travel", "Real Estate", "Marquee", "Catering", "Business Website"];
+  const businessTypes = ["Coaching", "Travel", "Real Estate", "Marquee", "Catering", "Clinic", "Salon", "Business Website"];
 
   function updateField(event) {
     const { name, value } = event.target;
@@ -617,7 +702,7 @@ function Contact() {
           </ul>
         </SectionReveal>
 
-        <SectionReveal className="contact-card" delay={0.08}>
+        <SectionReveal className="contact-card glass-card" delay={0.08}>
           <form onSubmit={submit} noValidate>
             <div className="form-grid">
               <label>
@@ -682,8 +767,20 @@ function StructuredData() {
       "Real Estate Websites",
       "Marquee Websites",
       "Catering Websites",
+      "Clinic Websites",
+      "Salon Websites",
       "Business Websites",
     ],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Portfolio projects",
+      itemListElement: allProjects.map((project) => ({
+        "@type": "CreativeWork",
+        name: project.title,
+        url: project.url,
+        genre: project.industry,
+      })),
+    },
     sameAs: [
       "https://github.com/anasraza9898",
       "https://www.instagram.com/anas__memon55/",
@@ -696,6 +793,7 @@ function StructuredData() {
 export default function App() {
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 120, damping: 24, restDelta: 0.001 });
+  const shouldReduceMotion = useReducedMotion();
 
   return (
     <LazyMotion features={domAnimation}>
@@ -703,16 +801,22 @@ export default function App() {
       <a className="skip-link" href="#main">Skip to main content</a>
       <m.div className="scroll-progress" style={{ scaleX }} aria-hidden="true" />
       <Header />
-      <main id="main">
+      <m.main
+        id="main"
+        initial={shouldReduceMotion ? false : { opacity: 0 }}
+        animate={shouldReduceMotion ? {} : { opacity: 1 }}
+        transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+      >
         <Hero />
         <StatsStrip />
         <Services />
         <Projects />
+        <MoreWork />
         <Proof />
         <Process />
         <Skills />
         <Contact />
-      </main>
+      </m.main>
       <Footer />
     </LazyMotion>
   );
